@@ -15,7 +15,8 @@ const messages = [
 
 const typewriterElement = document.getElementById('typewriter-text');
 const typeSound = document.getElementById('type-sound'); // Ambil elemen suara ketikan
-const imageContainer = document.getElementById('image-container'); // Ambil kontainer gambar
+const backgroundMusic = document.getElementById('background-music'); // Ambil elemen musik latar
+const startButton = document.getElementById('start-button'); // Ambil tombol start
 let currentMessageIndex = 0;
 let currentCharIndex = 0;
 const typingSpeed = 105; // Kecepatan mengetik lebih halus (milidetik per karakter)
@@ -54,7 +55,6 @@ function showNextMessage() {
     typewriterElement.innerHTML = ''; // Kosongkan elemen
     if (currentMessageIndex < messages.length) {
         // Ubah background ke hitam untuk semua pesan kecuali pesan terakhir
-        // Reset background
         document.body.style.backgroundColor = "black";
 
         // Mulai suara ketikan setiap kali kalimat baru dimulai
@@ -87,21 +87,24 @@ function displayImagesSequentially() {
     showNextImage(); // Mulai menampilkan gambar pertama
 }
 
-// Memulai musik dari awal ketika halaman dimuat (ini hanya dijalankan sekali)
-const backgroundMusic = document.getElementById('background-music');
+// Fungsi untuk memulai semua
+function startAll() {
+    startButton.style.display = 'none'; // Sembunyikan tombol
+    backgroundMusic.loop = false; // Set loop false jika kamu tidak ingin mengulang musik
+    backgroundMusic.play(); // Mulai musik saat tombol ditekan
 
-// Pastikan musik hanya diputar sekali dan tidak diulang
-backgroundMusic.loop = false; // Set loop false jika kamu tidak ingin mengulang musik
-backgroundMusic.play(); // Mulai musik saat halaman dimuat
+    // Mulai mengetik pesan pertama
+    setTimeout(() => {
+        // Mulai suara ketikan dari awal untuk memastikan langsung dimulai
+        try {
+            typeSound.play();
+        } catch (error) {
+            console.error("Suara ketikan tidak bisa diputar:", error);
+        }
 
-// Mulai mengetik pesan pertama
-setTimeout(() => {
-    // Mulai suara ketikan dari awal untuk memastikan langsung dimulai
-    try {
-        typeSound.play();
-    } catch (error) {
-        console.error("Suara ketikan tidak bisa diputar:", error);
-    }
+        typeNextCharacter();
+    }, 1000); // Jeda 1 detik sebelum mulai
+}
 
-    typeNextCharacter();
-}, 1000); // Jeda 1 detik sebelum mulai
+// Tambahkan event listener ke tombol
+startButton.addEventListener('click', startAll);

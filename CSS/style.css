@@ -70,3 +70,22 @@ body {
 /* .hidden {
     display: none;
 } */
+
+#start-button {
+    background-color: #ff6f61; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border: none; /* Hapus border default */
+    padding: 10px 20px; /* Jarak dalam tombol */
+    font-size: 18px; /* Ukuran font tombol */
+    cursor: pointer; /* Tampilkan pointer saat hover */
+    border-radius: 5px; /* Sudut melengkung */
+    z-index: 3; /* Pastikan tombol di depan elemen lain */
+    position: absolute; /* Posisi absolut */
+    top: 50%; /* Jarak dari atas */
+    left: 50%; /* Pusatkan tombol secara horizontal */
+    transform: translateX(-50%); /* Pusatkan tombol */
+}
+
+#start-button:hover {
+    background-color: #ff5a4d; /* Warna latar belakang saat hover */
+}
