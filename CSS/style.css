@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* Warna latar belakang hitam */
+    color: white; /* Warna teks putih */
+    position: relative; /* Posisi relatif untuk pengaturan gambar */
+    overflow: hidden;
+    transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
+}
+
+.typewriter-container {
+    position: relative; /* Kontainer untuk teks */
+    z-index: 2; /* Pastikan teks berada di depan gambar */
+    text-align: center; /* Tengah kan teks */
+    font-size: 24px; /* Ukuran font */
+}
+
+.message-container {
+    text-align: center;
+    color: white;
+    font-size: 2em;
+}
+
+#typewriter-text {
+    white-space: pre-wrap;
+    /* opacity: 0; 
+    transition: opacity 1s ease-in-out; */
+}
+
+.char {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards; /* Muncul per huruf dengan efek fade-in */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hidden-image {
+    position: absolute; /* Posisi absolut untuk gambar */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ukuran gambar penuh */
+    height: 100%; /* Ukuran gambar penuh */
+    object-fit: cover; /* Sesuaikan gambar agar penuh */
+    opacity: 0; /* Mulai dengan transparan */
+    transition: opacity 1s ease; /* Transisi halus untuk efek muncul */
+}
+
+.visible-image {
+    opacity: 1; /* Gambar muncul */
+}
+
+/* Kontainer untuk gambar */
+/* .hidden {
+    display: none;
+} */
